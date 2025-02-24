@@ -86,27 +86,6 @@ router.get('/get-products', async (req, res) => {
         }
     })
     
-    router.get('/my-products',async (req,res)=>{
-        const {email}=req.query
-        try{
-            const products= await Product.find({email})
-            const productsWithFullImageUrl= products.map(item=>{
-                item.images=item.images.map(url=>{
-                    return url
-                })
-                return item
-            })
-            res.status(200).json({products:productsWithFullImageUrl})
-            
-        }catch(e){
-            console.log(`server error`, err)
-            res.status(500).json({erroe:err.message})
-        }
-        
-        
-    } 
-    
-)
-
+   
 module.exports = router;
 //*** */

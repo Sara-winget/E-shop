@@ -27,7 +27,7 @@ axios.get(`${server}/user/getuser`,{withCredentials:true})
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/activation/:Activation_Token" element={<ActivationPage />} /> 
                  <Route path="/productCreate" element={<CreateProduct/>}/>
-                 <Route path="/MyProduct" element={<MyProduct/>}/>
+                 
             </Routes>
  
         </>
