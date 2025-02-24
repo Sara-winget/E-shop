@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 
-export default function Product({ name, images = [], description, price }) {
+export default function Product({ name, images, description, price }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     if (!images || images.length === 0) return;
     const interval = setInterval(() => {
       setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
-    }, 150000);
+    },5000);
     return () => clearInterval(interval);
   }, [images]); // ✅ Runs when images array length changes
 
-  const currentImage = images?.[currentIndex] || "placeholder.jpg";
+  const currentImage = images[currentIndex] || "placeholder.jpg";
 console.log(currentImage)
   return (
     <div className="bg-neutral-200 p-4 rounded-lg shadow-md flex flex-col justify-between">
