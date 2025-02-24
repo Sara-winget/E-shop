@@ -63,7 +63,6 @@ router.post('/createProduct',pupload.array('images',10),async(req,res)=>{
 
 
 
-module.exports = router;
 
 
 router.get('/get-products', async (req, res) => {
@@ -74,37 +73,40 @@ router.get('/get-products', async (req, res) => {
                 product.images = product.images.map(imagePath => {
                     // Image URLs are already prefixed with /products
                     return imagePath
-
+                    
                 });
             }
             return product;
         })
         res.status(200).json({ products: productsWithFullImageUrl })}
-
+        
         catch (err) {
             console.error(' Server error:', err);
             res.status(500).json({ error: 'Server error. Could not fetch products.' });
         }
     })
     
-router.get('/my-products',async (req,res)=>{
-const {email}=req.query
-try{
-    const products= await Product.find({email})
-    const productsWithFullImageUrl= products.map(item=>{
-        item.images=item.images.map(url=>{
-            return url
-        })
-        return item
-    })
-    res.status(200).json({products:productsWithFullImageUrl})
-
-}catch(e){
-    console.log(`server error`, err)
-    res.status(500).json({erroe:err.message})
-}
-
-
-} 
+    router.get('/my-products',async (req,res)=>{
+        const {email}=req.query
+        try{
+            const products= await Product.find({email})
+            const productsWithFullImageUrl= products.map(item=>{
+                item.images=item.images.map(url=>{
+                    return url
+                })
+                return item
+            })
+            res.status(200).json({products:productsWithFullImageUrl})
+            
+        }catch(e){
+            console.log(`server error`, err)
+            res.status(500).json({erroe:err.message})
+        }
+        
+        
+    } 
     
 )
+
+module.exports = router;
+//*** */

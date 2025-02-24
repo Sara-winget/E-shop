@@ -45,3 +45,4 @@ function MyProduct() {
 }
 
 export default MyProduct;
+/** */
