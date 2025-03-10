@@ -3,7 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from 'react-toastify';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import { LoginPage,Signup,ActivationPage,HomePage,CreateProduct,MyProduct,ProductDetail,Cart } from './Routes/Routes'
+import { LoginPage,Signup,ActivationPage,HomePage,CreateProduct,MyProduct,ProductDetail,Cart } from './routes/Routes'
 import { Bounce } from "react-awesome-reveal";
 import server from './server';
 import axios from 'axios';
