@@ -47,4 +47,4 @@ product Detail page created
 updated product and user schema with cart. created add to cart route and updated product detail page.
 
 # milestone 18
- created an endpoint to display the products into the cart
+ created an endpoint to display the products into the cart.
