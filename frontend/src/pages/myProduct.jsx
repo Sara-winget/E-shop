@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import server from '../server'
-import Product from '../components/product'
+import Product from '../components/Product'
 import {useNavigate} from 'react-router-dom'
 
 
@@ -11,7 +11,7 @@ const[product,setProduct]=  useState([])
 const [error,setError]=useState('')
 const navigate=useNavigate()
 const email = `sankamithra1614@gmail.com`
-const [id,setId]=useState('')
+
 const handleDelete = async(id)=>{
 await axios.delete(`${server}/product//delete-product/${id}`)
 }
