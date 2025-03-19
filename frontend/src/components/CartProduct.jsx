@@ -4,16 +4,16 @@ import { IoIosAdd } from "react-icons/io";
 import { IoIosRemove } from "react-icons/io";
 
 export default function CartProduct({ _id, name, images, quantity, price }) {
-	const [currentIndex, setCurrentIndex] = useState(0);
+	
 	const [quantityVal, setQuantityVal] = useState(quantity);
 
-	useEffect(() => {
-		if (!images || images.length === 0) return;
-		const interval = setInterval(() => {
-			setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-		}, 2000);
-		return () => clearInterval(interval);
-	}, [images]);
+	// useEffect(() => {
+	// 	if (!images || images.length === 0) return;
+	// 	const interval = setInterval(() => {
+	// 		setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+	// 	}, 2000);
+	// 	return () => clearInterval(interval);
+	// }, [images]);
 
 	const handleIncrement = () => {
 		const newquantityVal = quantityVal + 1;
@@ -44,12 +44,12 @@ const updateQuantityVal = (quantity) => {
 };
 
 
-	const currentImage = images[currentIndex];
+	
 	return (
 		<div className="h-max w-full p-4 flex justify-between border-b border-neutral-300 bg-neutral-100 rounded-lg">
 			<div className="flex flex-col gap-y-2">
 				<img
-					src={`http://localhost:5000/products/${currentImage}`} // Ensure the URL is correct\
+					src={`http://localhost:5000/products/${images[0]}`} // Ensure the URL is correct\
 					alt={name}
 					className="w-32 h-32 object-cover rounded-lg border border-neutral-300"
 				/>
@@ -96,3 +96,7 @@ const updateQuantityVal = (quantity) => {
 		</div>
 	);
 }
+
+
+
+
