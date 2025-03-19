@@ -22,12 +22,12 @@ const CreateAddress = () => {
             address2,
             zipCode,
             addressType,
-            email: "gowrishvarma@gmail.com"
+            email: "sankamithra1614@gmail.com"
         };
 
         try {
             const response = await axios.post(
-                "http://localhost:8000/api/user/add-address",
+                " http://localhost:5000/api/user/add-address",
                 addressData,
                 {
                     headers: { "Content-Type": "application/json" },
@@ -35,7 +35,7 @@ const CreateAddress = () => {
             );
             if (response.status === 201) {
                 alert("Address added successfully!");
-                navigate("/profile");
+                navigate("/");
             }
         } catch (err) {
             console.error("Error adding address:", err);

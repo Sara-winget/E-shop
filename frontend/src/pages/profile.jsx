@@ -16,7 +16,7 @@ export default function Profile() {
 
 	useEffect(() => {
 		fetch(
-			`http://localhost:8000/api/v2/user/profile?email=${"gowrishvarma@gmail.com"}`,
+			`http://localhost:5000/api/user/profile?email=${"sankamithra1614@gmail.com"}`,
 			{
 				method: "GET",
 				headers: {
@@ -33,15 +33,16 @@ export default function Profile() {
 			.then((data) => {
 				setPersonalDetails(data.user);
 				setAddresses(data.addresses);
+				console.log("User fetched:", data);
 				console.log("User fetched:", data.user);
-				console.log("Addresses fetched:", data.addresses);
+				//console.log("Addresses fetched:", data.addresses);
+               
 			});
 	}, []);
 
 	const handleAddAddress = () => {
 		navigate("/create-address");
 	};
-
 	return (
 		<>
 			<Nav />
@@ -59,7 +60,7 @@ export default function Profile() {
 									PICTURE
 								</div>
 								<img
-									src={`http://localhost:8000/${personalDetails.avatarUrl}` || `https://cdn.vectorstock.com/i/500p/17/61/male-avatar-profile-picture-vector-10211761.jpg`}
+									src={`http://localhost:5000/${personalDetails.avatarUrl}` || `https://cdn.vectorstock.com/i/500p/17/61/male-avatar-profile-picture-vector-10211761.jpg`}
 									alt="profile"
 									className="w-40 h-40 rounded-full"
 									onError={(e) => {
