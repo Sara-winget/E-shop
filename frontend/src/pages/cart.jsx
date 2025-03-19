@@ -12,16 +12,15 @@ const Cart = () => {
       axios
         .get(`http://localhost:5000/api/product/cartProduct?email=${'sankamithra1614@gmail.com'}`)
         .then((res) => {
+            console.log("Products fetched:", res);
           setProducts(res.data.cart.map(product => ({ quantity: product['quantity'], ...product['productId'] })));
-          console.log("Products fetched:", res.data.cart);
           console.log("Products:", products);
         })
         .catch((err) => {
           console.error("Error fetching products:", err);
         });
     }, []);
-    
-    
+        
 
     return (
         <div className='w-full h-screen'>

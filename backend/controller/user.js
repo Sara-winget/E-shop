@@ -146,8 +146,60 @@ router.get('/getuser',isAuthenticated, async(req,res,next)=>{
 
 
 
+router.get("/profile",async (req, res, next) => {
+    const { email } = req.query;
+    if (!email) {
+        // return next(new ErrorHandler("Please provide an email", 400));
+        res.status(400).send('provide email')
+    }
+    const user = await User.findOne({ email });
+    if (!user) {
+        // return next(new ErrorHandler("User not found", 404));
+        res.status(400).send('user not exist')
+    }
+    res.status(200).json({
+        success: true,
+        user: {
+            name: user.name,
+            email: user.email,
+            phoneNumber: user.phoneNumber,
+            avatarUrl: user.avatar.url
+        },
+        addresses: user.address,
+    });
+});
 
+router.post("/add-address",async (req, res, next) => {
+    try{
+    const { country, city, address1, address2, zipCode, addressType, email } = req.body;
 
+    const user = await User.findOne({ email });
+
+    if (!user) {
+        // return next(new ErrorHandler("User not found", 404));
+        res.status(400).send('user not there')
+    }
+
+    const newAddress = {
+        country,
+        city,
+        address1,
+        address2,
+        zipCode,
+        addressType,
+    };
+
+    user.address.push(newAddress);
+    await user.save();
+
+    res.status(201).json({
+        success: true,
+        addresses: user.address,
+    });}
+    catch(e){
+        res.status(500).send(e.message)
+    }
+});
 
 
 module.exports = router;
