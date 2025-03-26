@@ -10,12 +10,12 @@ const OrderConfirmation = () => {
     const { addressId, userEmail } = location.state ;
 console.log(addressId)
 console.log(userEmail)
-    const [selectedAddress, setSelectedAddress] = useState(null);
-    const [cartItems, setCartItems] = useState([]);
-    const [totalPrice, setTotalPrice] = useState(0);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-return(<>hii</>)
+return(<>order conformation</>)
+    // const [selectedAddress, setSelectedAddress] = useState(null);
+    // const [cartItems, setCartItems] = useState([]);
+    // const [totalPrice, setTotalPrice] = useState(0);
+    // const [loading, setLoading] = useState(true);
+    // const [error, setError] = useState(null);
     // useEffect(() => {
     //     // if (!addressId || !email) {
     //     //     navigate('/select-address'); // Redirect if no address selected or email missing

@@ -2,45 +2,26 @@
 import React, { useState, useEffect } from 'react';
 import Nav from '../components/nav'; // Ensure the path is correct and component name matches
 import { useNavigate } from 'react-router-dom';
-
-// Optionally, if you have a context or a way to get the authenticated user's email, import it
-// import { useAuth } from '../contexts/AuthContext';
-
+import axios from 'axios'
 const SelectAddress = () => {
     const [addresses, setAddresses] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    // Optionally, get the authenticated user's email from context or props
-    // const { user } = useAuth();
-    const userEmail = 'sankamithra1614@gmail.com'; // Replace with dynamic email in production
+  
+    const userEmail = 'sankamithra1614@gmail.com'; 
 
     useEffect(() => {
         const fetchAddresses = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/user/addresses?email=${userEmail}`);
-
-                if (!response.ok) {
-                    // Handle specific HTTP errors
-                    if (response.status === 404) {
-                        throw new Error('User not found.');
-                    } else if (response.status === 400) {
-                        throw new Error('Bad request. Email parameter is missing.');
-                    } else {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                }
-
-                const data = await response.json();
-
-                // Validate the response structure
-                if (data && Array.isArray(data.addresses)) {
-                    setAddresses(data.addresses);
-                } else {
-                    setAddresses([]);
-                    console.warn('Unexpected response structure:', data);
-                }
+                const data = await axios.get(`http://localhost:5000/api/user/addresses?email=${userEmail}`);
+console.log("whole response",data)
+console.log("taking the correct data", data.data)
+console.log("taking address from data", data.data.addresses )   
+              
+                    setAddresses(data.data.addresses);
+                
             } catch (err) {
                 console.error('Error fetching addresses:', err);
                 setError(err.message || 'An unexpected error occurred.');
@@ -102,8 +83,10 @@ const SelectAddress = () => {
                                 >
                                     <div>
                                         <p className='font-medium'>
-                                            {address.address1}{address.address2 ? `, ${address.address2}` : ''}, {address.city}, {address.state}, {address.zipCode}
+                                            {address.address1},
                                         </p>
+                                            <p>{address.address2}</p> 
+                                            <p>{address.city}, {address.state}, {address.zipCode}</p>
                                         <p className='text-sm text-gray-600'>{address.country}</p>
                                         <p className='text-sm text-gray-500'>Type: {address.addressType || 'N/A'}</p>
                                     </div>
