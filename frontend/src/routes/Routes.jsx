@@ -9,4 +9,6 @@ import ProductDetail from '../pages/ProductDetail';
 import Cart from '../pages/cart';
 import Profile from '../pages/profile';
 import CreateAddress from '../pages/createAddress';
-export { LoginPage,Signup,ActivationPage, HomePage,CreateProduct, MyProduct ,ProductDetail , Cart,Profile,CreateAddress }; // Named export
+import SelectAddress from '../pages/selectAddress';
+import OrderConfirmation from '../pages/Order';
+export { LoginPage,Signup,ActivationPage, HomePage,CreateProduct, MyProduct ,ProductDetail , Cart,Profile,CreateAddress,SelectAddress ,OrderConfirmation}; // Named export
