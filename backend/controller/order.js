@@ -1,47 +1,34 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const order = require('../model/order')
-const user = require('../model/user')
-const router=express.Router()
-const product = require('../model/product')
+const express = require("express");
+const router = express.Router();
+const Order = require("../model/order");
+const User = require("../model/user");
+const Product = require("../model/product");
 
-router.post('/my-order', async (req, res) => {
-    const { email, productId,quantity } = req.body;
-
+router.post("/my-order", async (req, res) => {
     try {
-        
-        
+        const { email, products, addressId, totalPrice } = req.body;
 
-       
-        const user = await user.findOne({ email });
-        if (!user) return res.status(404).send("User not found");
-
-      
-        const product = await product.findById(productId);
-        if (!product) return res.status(404).send("Product not found");
-        console.log(order.item)
-        if (!Array.isArray(order.item)) {
-            order.item = [];
-        }
-        const cartIndex = order.item.findIndex(item => item.productId.toString() === productId);
-
-        if (cartIndex !== -1) {
-            
-            order.item[cartIndex].quantity = quantity || 1;
-        } else {
-            
-            order.item.push({ productId, quantity: quantity || 1 });
+        if (!email || !products || !addressId || !totalPrice) {
+            return res.status(400).json({ error: "All fields are required" });
         }
 
-        
-        await order.save(); // ✅ Ensure the changes persist in DB
-        
-        return res.status(200).json({ message: "ordered successfully", myorders: order.item });
+        const user = await User.findOne({ email });
+        if (!user) return res.status(404).json({ error: "User not found" });
 
-    } catch (e) {
-        console.error("Error:", e);
-        return res.status(500).send(e.message);
+        const newOrder = new Order({
+            userId: user._id,
+            products,
+            addressId,
+            totalPrice,
+        });
+
+        await newOrder.save();
+        res.status(201).json({ message: "Order placed successfully", order: newOrder });
+
+    } catch (error) {
+        console.error("Error placing order:", error);
+        res.status(500).json({ error: "Server error, please try again later" });
     }
 });
 
-module.exports = router
+module.exports = router;

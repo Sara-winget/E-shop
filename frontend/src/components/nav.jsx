@@ -11,7 +11,7 @@ const Nav = () => {
       home
      </NavLink>
      
-     <NavLink to='/' >
+     <NavLink to='/profile' >
       Profile
      </NavLink >
      <NavLink to={'/'}>{/* wishlist*/ }

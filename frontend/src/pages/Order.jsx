@@ -5,10 +5,13 @@ import server from '../server';
 const OrderConfirmation = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { addressId, userEmail } = location.state || {};
-    
-    const [confirmOrder, setConfirmOrder] = useState(false);
+    let totalPrice=0
+    const { addressId, userEmail,products } = location.state || {};
+    console.log(addressId,userEmail,products)
 
+    const [confirmOrder, setConfirmOrder] = useState(false);
+products.map(p=>totalPrice+=p.price)
+console.log(totalPrice)
     const handleOrder =async () => {
         // const {res}=await axios.post(`${server}`)
         alert('Order confirmed successfully! Check your email for further details.');

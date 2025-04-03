@@ -8,7 +8,7 @@ const Cart = () => {
 const navigate= useNavigate()
     const [products, setProducts] = useState([]);
     const handlePlaceOrder = () => {
-        navigate('/select-address',{ state:{products:products}}); // Navigate to the Select Address page
+        navigate('/select-address',{ state:{products}}); 
       };
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const navigate= useNavigate()
                     </div>
                     <div className='w-full p-4 flex justify-end'>
           {  <button
-              onClick={()=>navigate('/select-address')}
+              onClick={handlePlaceOrder}
               className='bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600'
             >
               Place Order
