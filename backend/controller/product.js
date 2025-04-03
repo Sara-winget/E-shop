@@ -173,7 +173,10 @@ if(!products)
       
         const product = await Product.findById(productId);
         if (!product) return res.status(404).send("Product not found");
-
+        console.log(user.cart)
+        if (!Array.isArray(user.cart)) {
+            user.cart = [];
+        }
         const cartIndex = user.cart.findIndex(item => item.productId.toString() === productId);
 
         if (cartIndex !== -1) {
@@ -243,5 +246,27 @@ router.put('/cartproduct/quantity', async (req, res) => {
     } catch (err) {
         console.error('Server error:', err);
         res.status(500).json({ error: 'Server Error' });
+    }
+});
+router.put('/clear-cart', async (req, res) => {
+    try {
+        const { email } = req.body; // Extract email from request body
+
+        if (!email) {
+            return res.status(400).json({ error: "Email is required" });
+        }
+
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        user.cart=[];// user.cart.length=0
+        await user.save();
+
+        res.status(200).json({ message: "Cart cleared successfully", user });
+    } catch (error) {
+        res.status(500).json({ error: "Internal server error", details: error.message });
     }
 });

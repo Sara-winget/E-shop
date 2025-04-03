@@ -6,7 +6,7 @@ const cors = require('cors')
 const path = require('path');
 
 app.use(cors({
-    origin: 'http://localhost:5174',
+    origin: 'http://localhost:5173',
     credentials: true
   }))
 app.use(express.json())
@@ -24,9 +24,10 @@ if(process.env.NODE_ENV!=="PRODUCTION"){
 //routes
 const user = require('./controller/user')
 const product= require('./controller/product')
-
+const order = require('./controller/order')
  app.use('/api/user',user)
 app.use('/api/product',product)
+app.use('/api',order)
 
 app.use(ErrorHandler)
 module.exports=app

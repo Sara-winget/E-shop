@@ -80,7 +80,7 @@ axios.post(`${server}/create-user`,newForm,config).then((res)=>{
               <MdEmail className='mr-5 h-8 w-8'/>
             </div>
             <div  className='flex w-full h-8 mt-5 rounded-lg shadow-lg justify-center items-center  bg-slate-200'>
-              <input type={visible?"text":"password"} name='password' placeholder='password' required value={password} onChange={(e)=>setPassword(e.target.value)} className='w-full focus:outline-none ml-5 text-xl '/>
+              <input type={visible?"text":"password"} name='password' placeholder='password' minLength={8} required value={password} onChange={(e)=>setPassword(e.target.value)} className='w-full focus:outline-none ml-5 text-xl '/>
            {visible? (<IoEye onClick={()=>setVisible(false)} className='mr-5 h-8 w-8'/>): (<IoEyeOffOutline onClick={()=>setVisible(true)} className='mr-5 h-8 w-8'/>)}
             </div>
                <div className='flex flex-col w-full h-15 mt-5 rounded-lg shadow-lg justify-center items-center  bg-slate-200'>
