@@ -11,4 +11,5 @@ import Profile from '../pages/profile';
 import CreateAddress from '../pages/createAddress';
 import SelectAddress from '../pages/selectAddress';
 import OrderConfirmation from '../pages/Order';
-export { LoginPage,Signup,ActivationPage, HomePage,CreateProduct, MyProduct ,ProductDetail , Cart,Profile,CreateAddress,SelectAddress ,OrderConfirmation}; // Named export
+import MyOrders from '../pages/myOrders';
+export { LoginPage,Signup,ActivationPage, HomePage,CreateProduct, MyProduct ,ProductDetail , Cart,Profile,CreateAddress,SelectAddress ,OrderConfirmation, MyOrders}; // Named export

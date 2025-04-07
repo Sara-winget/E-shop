@@ -15,7 +15,7 @@ const [visible,setVisible]=useState(false)
 
 const handleSubmit=async(e)=>{
 e.preventDefault()
-await axios.post(`${server}/login-user`,{email,password,},{withCredentials: true}).
+await axios.post(`${server}/user/login-user`,{email,password,},{withCredentials: true}).
 then(res=>{toast.success("login success!")
   navigate("/")
 })
