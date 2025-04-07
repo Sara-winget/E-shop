@@ -17,9 +17,9 @@ const SelectAddress = () => {
         const fetchAddresses = async () => {
             try {
                 const data = await axios.get(`http://localhost:5000/api/user/addresses?email=${userEmail}`);
-console.log("whole response",data)
-console.log("taking the correct data", data.data)
-console.log("taking address from data", data.data.addresses )   
+// console.log("whole response",data)
+// console.log("taking the correct data", data.data)
+// console.log("taking address from data", data.data.addresses )   
               
                     setAddresses(data.data.addresses);
                 

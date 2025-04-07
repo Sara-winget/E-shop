@@ -8,12 +8,19 @@ const OrderConfirmation = () => {
     let totalPrice=0
     const { addressId, userEmail,products } = location.state || {};
     console.log(addressId,userEmail,products)
+    const [productIds, setProductIds] = useState([]);
+
+
+    const ids = products.map(item => item._id);
+    setProductIds(ids);
+    
 
     const [confirmOrder, setConfirmOrder] = useState(false);
 products.map(p=>totalPrice+=p.price)
 console.log(totalPrice)
     const handleOrder =async () => {
-        // const {res}=await axios.post(`${server}`)
+         const {res}=await axios.post(`${server}/my-order`,{addressId,email:userEmail,productId:products,totalPrice})
+         console.log(res)
         alert('Order confirmed successfully! Check your email for further details.');
       const {data}= await axios.put(`${server}/product/clear-cart`,{email:userEmail})  
   console.log(data)

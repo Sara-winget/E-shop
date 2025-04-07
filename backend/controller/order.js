@@ -6,9 +6,9 @@ const Product = require("../model/product");
 
 router.post("/my-order", async (req, res) => {
     try {
-        const { email, products, addressId, totalPrice } = req.body;
+        const { email, productId, addressId, totalPrice } = req.body;
 
-        if (!email || !products || !addressId || !totalPrice) {
+        if (!email || !productId|| !addressId || !totalPrice) {
             return res.status(400).json({ error: "All fields are required" });
         }
 
@@ -17,7 +17,7 @@ router.post("/my-order", async (req, res) => {
 
         const newOrder = new Order({
             userId: user._id,
-            products,
+            productId,
             addressId,
             totalPrice,
         });
