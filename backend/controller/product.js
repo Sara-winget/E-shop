@@ -270,3 +270,14 @@ router.put('/clear-cart', async (req, res) => {
         res.status(500).json({ error: "Internal server error", details: error.message });
     }
 });
+
+router.get('/myOrder',async(req,res)=>{
+    try{
+const email = req.query
+if(!email)
+    res.status(400).json({msg})
+    }
+    catch(e){
+
+    }
+})

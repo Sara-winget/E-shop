@@ -3,7 +3,7 @@ import Nav from '../components/nav';
 import { useState, useEffect } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-
+import React from 'react';
 const Cart = () => {
 const navigate= useNavigate()
     const [products, setProducts] = useState([]);

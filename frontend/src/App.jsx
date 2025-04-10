@@ -7,7 +7,7 @@ import { LoginPage,Signup,ActivationPage,HomePage,CreateProduct,MyProduct,Produc
 import { Bounce } from "react-awesome-reveal";
 import server from './server';
 import axios from 'axios';
-
+import React from 'react';
 function App() {
     const [count, setCount] = useState(0);
 

@@ -10,10 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@paypal/react-paypal-js": "^8.8.2",
     "@tailwindcss/postcss": "^4.0.0",
     "@tailwindcss/vite": "^4.0.0",
     "axios": "^1.7.9",
     "country-state-city": "^3.2.1",
+    "dotenv": "^16.4.7",
     "postcss": "^8.5.1",
     "react": "^18.3.1",
     "react-awesome-reveal": "^4.3.1",
@@ -39,4 +41,3 @@
     "vite": "^6.0.5"
   }
 }
-

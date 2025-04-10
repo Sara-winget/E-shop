@@ -1,6 +1,13 @@
 import React from 'react'
 
-function myOrders({}) {
+function myOrders({
+    productId
+    }) {
+
+
+
+
+        
   return (
     <div>
       
